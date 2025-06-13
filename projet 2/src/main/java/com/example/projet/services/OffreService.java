@@ -39,8 +39,12 @@ public class OffreService {
     public Offre modifier(Long id, Offre updatedOffre) {
         Offre existing = getById(id);
         existing.setTitre(updatedOffre.getTitre());
+        existing.setDepartment(updatedOffre.getDepartment());
         existing.setDescription(updatedOffre.getDescription());
         existing.setLocalisation(updatedOffre.getLocalisation());
+        existing.setSalaryRange(updatedOffre.getSalaryRange());
+        existing.setStatus(updatedOffre.getStatus());
+        existing.setRequirements(updatedOffre.getRequirements());
         existing.setTypeContrat(updatedOffre.getTypeContrat());
         return offreRepository.save(existing);
     }
