@@ -26,7 +26,10 @@ public class JobApplication {
 
     private String applicantEmail;
 
-    private String cvFilePath;
+    @Lob
+    private byte[] cvFile; // The file data
+
+    private String cvFileName; // The original filename (optional)
 
     private LocalDate applicationDate;
 }

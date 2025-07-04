@@ -31,17 +31,18 @@ public class JobApplicationService {
             throw new IOException("User has already applied to this job");
         }
 
-        // Create upload directory if not exists
-        Files.createDirectories(Paths.get(UPLOAD_DIR));
+        // // Create upload directory if not exists
+        // Files.createDirectories(Paths.get(UPLOAD_DIR));
 
-        String filename = System.currentTimeMillis() + "_" + cvFile.getOriginalFilename();
-        Path filePath = Paths.get(UPLOAD_DIR + filename);
+        // String filename = System.currentTimeMillis() + "_" + cvFile.getOriginalFilename();
+        // Path filePath = Paths.get(UPLOAD_DIR + filename);
 
         // Save the CV file
-        Files.copy(cvFile.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+        // Files.copy(cvFile.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
 
-        // Set CV file path and application date
-        application.setCvFilePath(filePath.toString());
+        /// Save the file content in the database
+        application.setCvFile(cvFile.getBytes());
+        application.setCvFileName(cvFile.getOriginalFilename());
         application.setApplicationDate(LocalDate.now());
 
         // Save application
@@ -52,4 +53,10 @@ public class JobApplicationService {
     public java.util.List<JobApplication> getApplicationsByJobId(Long jobId) {
         return jobApplicationRepository.findByJobOfferId(jobId);
     }
+    public JobApplication getById(Long id) {
+        return jobApplicationRepository.findById(id).orElse(null);
+    }
+
+    // Removed invalid TypeScript/JavaScript method getCVsByJobId
+    
 }

@@ -50,4 +50,25 @@ public class JobApplicationController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
         }
     }
+
+    // Endpoint to download the CV file for a given application
+@GetMapping("/{id}/cv")
+public ResponseEntity<byte[]> downloadCV(@PathVariable Long id) {
+    JobApplication app = jobApplicationService.getById(id);
+    if (app == null || app.getCvFile() == null) {
+        return ResponseEntity.notFound().build();
+    }
+    String fileName = app.getCvFileName();
+    String contentType = "application/pdf";
+    if (fileName != null) {
+        String lower = fileName.toLowerCase();
+        if (lower.endsWith(".docx")) contentType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+        else if (lower.endsWith(".doc")) contentType = "application/msword";
+        else if (lower.endsWith(".pdf")) contentType = "application/pdf";
+    }
+    return ResponseEntity.ok()
+        .header("Content-Disposition", "attachment; filename=\"" + fileName + "\"")
+        .header("Content-Type", contentType)
+        .body(app.getCvFile());
+}
 }

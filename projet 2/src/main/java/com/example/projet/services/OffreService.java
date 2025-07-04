@@ -18,11 +18,24 @@ public class OffreService {
 
     @Autowired
     private OffreRepository offreRepository;
-
+    @Autowired
+    private LinkedInService linkedInService;
+    
     // ➕ Ajouter une nouvelle offre
     public Offre ajouter(Offre offre) {
-        offre.setDatePublication(LocalDate.now());
-        return offreRepository.save(offre);
+    offre.setDatePublication(LocalDate.now());
+    Offre saved = offreRepository.save(offre);
+
+        // Post to LinkedIn
+        linkedInService.postJobToLinkedIn(
+            saved.getTitre(),
+            saved.getDescription(),
+            saved.getLocalisation(),
+            saved.getSalaryRange(),
+            saved.getDepartment()
+        );
+
+    return saved;
     }
 
     // 📄 Liste de toutes les offres
