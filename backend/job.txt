@@ -1,0 +1,17 @@
+Job Title: Embedded Systems Engineer
+We are looking for a motivated Embedded Engineer to design, develop, and test firmware for microcontroller-based systems. 
+The ideal candidate has solid experience in C/C++, real-time systems, and low-level driver development. 
+You'll work closely with hardware and software teams to bring innovative embedded solutions to life.
+
+Requirements:
+
+Proficiency in C/C++ for embedded systems
+
+Experience with microcontrollers (e.g., STM32, NXP)
+
+Knowledge of communication protocols (UART, SPI, I2C, CAN)
+
+Familiarity with RTOS or bare-metal programming
+
+Nice to have: Python, embedded Linux, CI/CD tools, automotive or IoT experience.
+
