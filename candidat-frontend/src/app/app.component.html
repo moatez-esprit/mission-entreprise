@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm px-4">
+  <a class="navbar-brand text-white fw-bold" routerLink="/">
+    <i class="fas fa-rocket me-2 text-warning"></i> HR CHATBOT Plateforme
+  </a>
+
+  <div class="ms-auto d-flex align-items-center">
+    <!--a *ngIf="isCandidate" class="nav-link text-white" routerLink="/applications">My Applications</a-->
+    <a class="nav-link text-white" routerLink="/about">A propos</a>
+    <a class="nav-link text-white" routerLink="/contact">Contact</a>
+    <button class="btn btn-outline-light ms-3" (click)="logout()">Déconnexion</button>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+
+<!--footer class="bg-primary text-center text-white py-3 mt-4">
+  <small>© 2025 HR Chatbot Platform. All rights reserved.</small>
+</footer-->

@@ -1,0 +1,69 @@
+/* Background full-screen */
+.login-container {
+  height: 90vh;
+  background: linear-gradient(to right, #1e3c72, #2a5298);
+  background-size: cover;
+  background-position: center;
+}
+
+/* Card style */
+.login-card {
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 16px;
+  max-width: 500px;
+  width: 90%;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease;
+}
+
+/* Button hover */
+button.btn:hover {
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+
+.login-page {
+  height: 100vh; /* hauteur pleine page */
+  background: linear-gradient(to right, #007bff, #00c6ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 600px;
+}
+
+.login-card {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 16px;
+  color: white;
+  width: 100%;
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

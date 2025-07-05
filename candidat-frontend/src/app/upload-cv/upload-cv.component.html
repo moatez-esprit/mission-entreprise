@@ -1,0 +1,18 @@
+<h2>Upload de CV pour une offre d'emploi</h2>
+
+<label for="jobSelect">Sélectionnez une offre :</label>
+<select id="jobSelect" [(ngModel)]="selectedJobId">
+  <option [ngValue]="null">-- Choisissez une offre --</option>
+  <option *ngFor="let job of jobs" [value]="job.id">{{ job.description }}</option>
+</select>
+
+<br/><br/>
+
+<label for="fileInput">Choisissez un fichier CV (txt ou pdf) :</label>
+<input type="file" id="fileInput" (change)="onFileChange($event)" accept=".txt,.pdf" />
+
+<br/><br/>
+
+<button (click)="onSubmit()">Envoyer</button>
+
+<p *ngIf="message">{{ message }}</p>

@@ -1,0 +1,18 @@
+<div class="container mt-5 applications-container">
+  <h2 class="text-center  mb-4">📄 Mes Applications</h2>
+
+  <div *ngFor="let cvName of applicationsByCV | keyvalue" class="mb-4 application-card animate-fade-in">
+    <div class="card shadow-sm">
+      <div class="card-header ">
+        <h5 class="mb-0"><i class="fas fa-user"></i> {{ cvName.key }}</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let offer of cvName.value">
+          <strong>{{ offer.title }}</strong> at {{ offer.company }} 
+          <span class="text-muted">({{ offer.location }})</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div><a routerLink="/candidat" class="nav-link ">Retour</a></div>
+</div>

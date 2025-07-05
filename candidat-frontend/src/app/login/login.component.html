@@ -1,0 +1,33 @@
+<p>                                         </p>
+<p>                                         </p>
+<p>                                         </p>
+<p>                                         </p>
+<p>                                         </p>
+<p>    <br>                                     </p>
+<p> <br>                                        </p>
+<p>  <br>                                       </p>
+<div class="login-container d-flex align-items-center justify-content-center">
+  <div class="login-card text-center shadow-lg p-5">
+    <h2 class="mb-3">🔐 Welcome to <span class="text-warning">HR Chatbot</span></h2>
+
+    <form (ngSubmit)="login()" #loginForm="ngForm">
+      <!--input [(ngModel)]="username" name="username" placeholder="Username" class="form-control my-2" required>
+      <select [(ngModel)]="role" name="role" class="form-control my-2" required>
+        <option value="candidat">Candidat</option>
+        <option value="rh">RH</option>
+      </select-->
+      <div class="mt-4">
+      <button class="btn btn-outline-warning btn-lg mx-3 px-4" (click)="loginAs('rh')">
+        👨‍💼 RH
+      </button>
+      <button class="btn btn-outline-warning btn-lg mx-3 px-4" (click)="loginAs('candidat')">
+        👩‍🎓 Candidate
+      </button>
+    </div>
+    </form>
+
+    <p class="text-danger mt-2" *ngIf="errorMessage">{{ errorMessage }}</p>
+  </div>
+</div>
+
+

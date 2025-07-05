@@ -1,0 +1,98 @@
+<!-- NAVBAR -->
+<!--nav class="navbar">
+  <div class="navbar-brand ">
+    <i class="fas fa-briefcase text-center" ></i> RH CHATBOT Platform
+  </div>
+  <div class="navbar-links">
+    <a routerLink="/candidat" class="nav-link">Voir les Offres</a>
+    <a routerLink="/mes-postulations" class="nav-link ">My Applications</a>
+
+    <a routerLink="/applications" class="nav-btn">
+      My Applications ({{ candidatures.length }})
+    </a>
+
+    <button class="btn-logout" (click)="goBack()">Return</button>
+  </div>
+</nav-->
+
+<!-- HEADER -->
+<div class="platform-header text-center py-4 position-relative">
+  <a routerLink="/mes-postulations" class="btn btn-outline-primary position-absolute top-0 end-0 m-3">
+    📄 Mes Applications
+  </a>
+
+  <h2 class="fw-semibold text-primary">
+    <i class="fas fa-briefcase me-2"></i> Offres d'emploi
+  </h2>
+  <p class="text-muted">Trouvez votre opportunité avec notre plateforme intelligente</p>
+</div>
+
+
+<!-- LISTE DES OFFRES -->
+<div class="offer-list">
+  <div *ngFor="let offer of offers" class="offer-card" [class.selected]="selectedId === offer.id">
+    <h3>{{ offer.title }}</h3>
+    <p>{{ offer.company }} - {{ offer.location }}</p>
+    <p class="description">{{ offer.description }}</p>
+    <button (click)="onSelect(offer)">Détails</button>
+    <button (click)="triggerFileUpload(offer)">Postuler</button>
+  </div>
+</div>
+
+<!-- DÉTAILS DE L'OFFRE -->
+<div *ngIf="selectedOfferDetails" class="offer-details">
+  <h3><i class="fas fa-info-circle"></i> Détails de l'offre</h3>
+  <p><strong>Titre:</strong> {{ selectedOfferDetails.title }}</p>
+  <p><strong>Entreprise:</strong> {{ selectedOfferDetails.company }}</p>
+  <p><strong>Lieu:</strong> {{ selectedOfferDetails.location }}</p>
+  <p><strong>Description complète:</strong></p>
+  <p>{{ selectedOfferDetails.description }}</p>
+  <button (click)="selectedOfferDetails = null">Fermer</button>
+</div>
+
+<!-- 🔽 Espace postulations -->
+<div *ngIf="candidatures.length > 0" class="mt-4 p-3 bg-light rounded">
+  <h4>Mes Postulations</h4>
+  <ul class="list-group">
+    <li *ngFor="let c of candidatures" class="list-group-item d-flex justify-content-between align-items-center">
+      <span>
+        Offre : <strong>{{ c.offer.title }}</strong><br>
+        Entreprise : {{ c.offer.company }}
+      </span>
+      <span class="badge bg-primary text-white">CV : {{ c.cvName }}</span>
+    </li>
+  </ul>
+</div>
+
+
+
+<div *ngFor="let offer of offers">
+  <h4>{{ offer.title }}</h4>
+  <!--p>{{ offer.company }} - {{ offer.location }}</p>
+  <p>{{ offer.description }}</p-->
+
+  
+
+  <div *ngIf="offer.matchResult" class="mt-2 text-success">
+    <strong>🏆 Meilleur CV :</strong> {{ offer.matchResult.best_cv_name }} <br>
+    <strong>Score :</strong> {{ offer.matchResult.score }}
+  </div>
+
+  <!-- 📅 Planification test technique -->
+  <label for="testDate">📆 Choisir date et heure du Test Technique :</label><br>
+  <input
+    type="datetime-local"
+    [id]="'testDate-' + offer.id"
+    (change)="onDateSelected($event, offer.id)"
+  />
+
+  <!-- ✅ Afficher la date sélectionnée -->
+  <div *ngIf="selectedTestDates[offer.id]" class="mt-2 text-primary">
+    ⏰ Test planifié pour : {{ selectedTestDates[offer.id] | date:'full' }}
+  </div>
+  <hr>
+</div>
+
+
+<!-- INPUT FILE CACHÉ -->
+<input #fileInput type="file" style="display: none" (change)="onFileSelected($event)" accept=".pdf,.doc,.docx" />

@@ -1,0 +1,38 @@
+/* Global background */
+body {
+  background-color: #f8f9fa; /* gris clair agréable */
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+}
+
+/* Main content layout */
+.main-content {
+  min-height: 85vh;
+  background-color: #ffffff;
+  color: #212529; /* texte noir/gris foncé lisible */
+  border-radius: 8px;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* Footer style */
+footer.footer {
+  font-size: 0.85rem;
+}
+
+/* Uniform link appearance */
+a.nav-link {
+  margin-left: 15px;
+  font-weight: 500;
+}
+
+/* Hover effect for navbar links */
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+/* Button spacing */
+button {
+  margin-right: 5px;
+}
